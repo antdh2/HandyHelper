@@ -1,1 +1,10 @@
 /* YOUR CUSTOM STYLES */
+
+.taskimage {
+    max-width: 100%;
+    height: 270px;
+}
+
+.taskactions {
+    margin-bottom: 10px;
+}

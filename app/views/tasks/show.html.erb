@@ -1,19 +1,71 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @task.name %>
-</p>
+<!--Product panel-->
+<div class="jumbotron product-panel">
+  <!--Grid-->
+  <div class="container-fluid">
+    <div class="row">
 
-<p>
-  <strong>Description:</strong>
-  <%= @task.description %>
-</p>
+      <!--First column-->
+      <div class="col-md-4">
+        <h4>Image</h4>
+        <hr>
+        <!--Carousel Wrapper-->
+        <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+          <%= image_tag @task.image.url(), class: "img-fluid" %>
+        </div>
+        <!--/.Carousel Wrapper-->
+      </div>
+      <!--/.First column-->
 
-<p>
-  <strong>Price:</strong>
-  <%= @task.price %>
-</p>
+      <!--Second column-->
+      <div class="col-md-4">
+        <!--Title-->
+        <a><h4><%= @task.name %></h4></a>
+        <hr>
+        <!--Price-->
+        <div class="price">
+          <p><span class="price-after"><%= number_to_currency(@task.price) %></span>
+        </div>
+        <!--Size-->
+        <div class="status">
+          Status: Open
+        </div>
+        <!--Call to action-->
+        <button class="btn btn-success">Make An Offer</button>
+        <a class="btn-floating wishlist" data-toggle="tooltip" data-placement="bottom" title="Add to wishlist"><i class="fa fa-heart"></i></a>
 
-<%= link_to 'Edit', edit_task_path(@task), class: "btn btn-link" %> |
-<%= link_to 'Back', tasks_path, class: "btn btn-link" %>
+        <hr>
+
+        <!--Social buttons-->
+        <p>Share with your friends!</p>
+        <ul class="inline-ul">
+          <li><a class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a></li>
+          <li><a class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
+          <li><a class="btn-floating btn-small btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
+          <li><a class="btn-floating btn-small btn-li"><i class="fa fa-linkedin"> </i></a></li>
+          <li><a class="btn-floating btn-small btn-git"><i class="fa fa-github"> </i></a></li>
+          <li><a class="btn-floating btn-small btn-pin"><i class="fa fa-pinterest"> </i></a></li>
+          <li><a class="btn-floating btn-small btn-ins"><i class="fa fa-instagram"> </i></a></li>
+        </ul>
+      </div>
+      <!--/.Second column-->
+
+      <!--Third column-->
+      <div class="col-md-4">
+        <h4>Short decription</h4>
+        <hr>
+        <%= @task.description %>
+        <a class="btn btn-primary">Ask about details</a>
+      </div>
+      <!--/.Third column-->
+    </div>
+  </div>
+  <!--/.Grid-->
+</div>
+<!--/.Product panel-->
+
+<div class="actions" align="center">
+  <%= link_to 'Edit', edit_task_path(@task), class: "btn btn-link" %> |
+  <%= link_to 'Back', tasks_path, class: "btn btn-link" %>
+</div>
