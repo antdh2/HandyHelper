@@ -17,6 +17,7 @@ gem 'fog'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem "mini_magick"
 gem 'devise'
+gem 'toastr-rails'
 
 
 group :production do

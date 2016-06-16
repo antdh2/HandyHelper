@@ -14,6 +14,7 @@ Rails.application.config.assets.precompile += %w( bootstrap.js )
 Rails.application.config.assets.precompile += %w( mdb.js )
 Rails.application.config.assets.precompile += %w( jquery-2.2.3.js )
 
+
 Rails.application.config.assets.precompile += %w( bootstrap.css )
 Rails.application.config.assets.precompile += %w( mdb.css )
 Rails.application.config.assets.precompile += %w( style.css )
