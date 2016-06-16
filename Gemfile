@@ -15,6 +15,8 @@ gem 'paperclip-rack', require: 'paperclip/rack'
 gem 'carrierwave'
 gem 'fog'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
+gem "mini_magick"
+gem 'devise'
 
 
 group :production do
