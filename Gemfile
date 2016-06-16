@@ -12,6 +12,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'paperclip-rack', require: 'paperclip/rack'
+gem 'carrierwave'
+gem 'fog'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 
 group :production do
