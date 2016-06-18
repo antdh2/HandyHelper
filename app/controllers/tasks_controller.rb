@@ -1,30 +1,28 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :dashboard]
   before_filter :check_user, only: [:edit, :update, :destroy]
 
-  # GET /tasks
-  # GET /tasks.json
-  def index
-    @tasks = Task.all
+  def dashboard
+    # show all tasks from current user
+    @tasks = Task.where(user: current_user).order("created_at DESC")
   end
 
-  # GET /tasks/1
-  # GET /tasks/1.json
+
+  def index
+    @tasks = Task.all.order("created_at DESC")
+  end
+
   def show
   end
 
-  # GET /tasks/new
   def new
     @task = Task.new
   end
 
-  # GET /tasks/1/edit
   def edit
   end
 
-  # POST /tasks
-  # POST /tasks.json
   def create
     @task = Task.new(task_params)
     @task.user_id = current_user.id
@@ -40,8 +38,6 @@ class TasksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tasks/1
-  # PATCH/PUT /tasks/1.json
   def update
     respond_to do |format|
       if @task.update(task_params)
@@ -54,8 +50,6 @@ class TasksController < ApplicationController
     end
   end
 
-  # DELETE /tasks/1
-  # DELETE /tasks/1.json
   def destroy
     @task.destroy
     respond_to do |format|
