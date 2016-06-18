@@ -1,87 +1,35 @@
-<h1 align="center">Latest Tasks In Your Area</h1>
+<h1 align="center">Your Tasks</h1>
 <hr>
 <br>
-<% @tasks.each do |task| %>
-    <div class="col-md-4">
-      <!--Card-->
-      <div class="card product-card">
 
-        <!--Card image-->
-        <div class="view overlay hm-white-slight">
-          <%= image_tag task.image_url, class: "img-fluid taskimage" %>
-          <a>
-            <div class="mask"> </div>
-          </a>
+<table class="table table-hover table-bordered">
+  <tr>
+    <th class="center">Image</th>
+    <th class="center">Name</th>
+    <th class="center">Description</th>
+    <th class="center">Price</th>
+    <th class="center">Actions</th>
+  </tr>
+
+  <% @tasks.each do |task| %>
+  <tr>
+    <td id="tableimg"><%= image_tag task.image.url %></td>
+    <td><%= task.name %></td>
+    <td><%= task.description %></td>
+    <td><%= number_to_currency(task.price) %></td>
+    <td>
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="actions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          View Actions
+        </button>
+        <div class="dropdown-menu" aria-labelledby="actions">
+          <%= link_to "View", task, class: "dropdown-item" %>
+          <%= link_to "Edit", edit_task_path(task), class: "dropdown-item" %>
+          <%= link_to "Delete", task, method: :delete, data: {confirm: "Are you sure?"}, class: "dropdown-item" %>
         </div>
-        <!--/.Card image-->
-
-        <!--Rating-->
-        <a class="btn rating ">
-          Make An Offer
-        </a>
-
-        <!--Buttons-->
-        <div class="action-buttons">
-          <a class="btn-floating activator"><i class="fa fa-share-alt"></i></a>
-          <a class="btn-floating" data-toggle="tooltip" data-placement="bottom" title="Add to wishlist"><i class="fa fa-heart"></i></a>
-        </div>
-
-        <!--Card content-->
-        <div class="card-block">
-          <!--Title-->
-          <a><h4 class="card-title"><%= link_to "#{task.name}", task %></h4></a>
-        </div>
-
-        <div class="description">
-          <p><%= task.description %></p>
-        </div>
-
-        <!--Call to action-->
-        <div class="cta">
-          <p><%= number_to_currency(task.price) %></p>
-
-          <button class="btn btn-default" data-toggle="modal" data-target="#quick-look-ex">Quick look</button>
-        </div>
-
-        <div class="whoby">
-          <p align="center"><%= "Sold by #{task.user.name}" %></p>
-        </div>
-
-
-        <% if (user_signed_in?) && (current_user == task.user) %>
-            <div class="taskactions" align="center">
-              <%= link_to 'Show', task, class: "btn btn-link" %>
-              <%= link_to 'Edit', edit_task_path(task), class: "btn btn-link" %>
-              <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
-              <br>
-            </div>
-        <% end %>
-
-
-
-        <!--Card reveal-->
-        <div class="card-reveal">
-          <div class="content text-xs-center">
-
-            <h4 class="card-title">Social shares <i class="fa fa-close"></i></h4>
-            <hr>
-
-            <!--Social Icons-->
-            <ul class="inline-ul">
-              <li><a class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a></li>
-              <li><a class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
-              <li><a class="btn-floating btn-small btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
-              <li><a class="btn-floating btn-small btn-li"><i class="fa fa-linkedin"> </i></a></li>
-              <li><a class="btn-floating btn-small btn-git"><i class="fa fa-github"> </i></a></li>
-              <li><a class="btn-floating btn-small btn-pin"><i class="fa fa-pinterest"> </i></a></li>
-              <li><a class="btn-floating btn-small btn-ins"><i class="fa fa-instagram"> </i></a></li>
-            </ul>
-
-          </div>
-        </div>
-        <!--/.Card reveal-->
-
       </div>
-      <!--/.Card-->
-    </div>
-<% end %>
+
+    </td>
+  </tr>
+  <% end %>
+</table>

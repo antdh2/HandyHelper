@@ -22,3 +22,11 @@
 .col-md-4:nth-child(3n+1) {
     clear: left;
 }
+
+#tableimg img {
+    max-width: 150px;
+}
+
+.center {
+    text-align: center;
+}
