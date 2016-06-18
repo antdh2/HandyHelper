@@ -64,8 +64,9 @@
   <!--/.Grid-->
 </div>
 <!--/.Product panel-->
-
+<% if (user_signed_in?) && (current_user == @task.user) %>
 <div class="actions" align="center">
   <%= link_to 'Edit', edit_task_path(@task), class: "btn btn-link" %> |
   <%= link_to 'Back', tasks_path, class: "btn btn-link" %>
 </div>
+<% end %>

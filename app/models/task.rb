@@ -13,4 +13,6 @@ class Task < ActiveRecord::Base
   # validate presence of an image on task
   # validates_attachment_presence :image
 
+  belongs_to :user
+
 end

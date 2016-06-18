@@ -29,7 +29,7 @@
     <!--Card content-->
     <div class="card-block">
       <!--Title-->
-      <a><h4 class="card-title"><%= task.name %></h4></a>
+      <a><h4 class="card-title"><%= link_to "#{task.name}", task %></h4></a>
     </div>
 
     <div class="description">
@@ -43,12 +43,21 @@
       <button class="btn btn-default" data-toggle="modal" data-target="#quick-look-ex">Quick look</button>
     </div>
 
-    <div class="taskactions" align="center">
-      <%= link_to 'Show', task, class: "btn btn-link" %>
-      <%= link_to 'Edit', edit_task_path(task), class: "btn btn-link" %>
-      <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
-      <br>
+    <div class="whoby">
+      <p align="center"><%= "Sold by #{task.user.name}" %></p>
     </div>
+
+
+    <% if (user_signed_in?) && (current_user == task.user) %>
+    <div class="taskactions" align="center">
+        <%= link_to 'Show', task, class: "btn btn-link" %>
+        <%= link_to 'Edit', edit_task_path(task), class: "btn btn-link" %>
+        <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link" %>
+        <br>
+      </div>
+    <% end %>
+
+
 
     <!--Card reveal-->
     <div class="card-reveal">
