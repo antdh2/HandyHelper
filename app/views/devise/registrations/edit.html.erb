@@ -4,6 +4,8 @@
     <h3 class="card-header" align="center">Edit <%= resource_name.to_s.humanize %></h3>
     <div class="card-block">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render 'layouts/devisemes' %>
+
           <%= devise_error_messages! %>
 
           <div class="md-form form-group">
@@ -45,6 +47,7 @@
             <%= f.button "Edit Profile", class: 'btn btn-primary btn-lg' %>
           </div>
       <% end %>
+
       <%= link_to "Back", :back %>
     </div>
   </div>

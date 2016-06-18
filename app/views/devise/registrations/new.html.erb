@@ -1,5 +1,6 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    <%= render 'layouts/devisemes' %>
+
     <div class="col-md-6 col-md-offset-2 margin-top">
   <!--Panel-->
   <div class="card">
@@ -44,7 +45,6 @@
 
 <% end %>
 
-<%= render "devise/shared/links" %>
 
 
 

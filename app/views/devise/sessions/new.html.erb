@@ -5,6 +5,7 @@
     <div class="card-block">
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= render 'layouts/devisemes' %>
           <div class="md-form form-group">
             <i class="fa fa-envelope prefix"></i>
             <%= f.email_field :email, autofocus: true, id: 'email', class: "form-control validate" %>
