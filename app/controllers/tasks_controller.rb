@@ -14,6 +14,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    @offers = Offer.where("task_id = ?", @task)
   end
 
   def new

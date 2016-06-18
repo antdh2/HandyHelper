@@ -6,12 +6,13 @@ Rails.application.routes.draw do
 
   # nest all routes AFTER /tasks/:id
   resources :tasks do
-    resources :offers
+    resources :offers, only: [:new, :create]
   end
   get 'pages/about'
   get 'pages/contact'
   get 'dashboard' => "tasks#dashboard"
-
+  get 'sales' => "offers#sales"
+  get 'purchases' => "offers#purchases"
 
 
   root 'tasks#index'

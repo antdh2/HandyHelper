@@ -33,6 +33,13 @@
         <%= link_to "Make An Offer", new_task_offer_path(@task), class: "btn btn-success" %>
         <a class="btn-floating wishlist" data-toggle="tooltip" data-placement="bottom" title="Add to wishlist"><i class="fa fa-heart"></i></a>
 
+        <div class="existingoffers">
+          <% @offers.each do |offer| %>
+            <%= offer.buyer.name %>
+            <%= number_to_currency(offer.price) %>
+              <hr>
+          <% end %>
+        </div>
         <hr>
 
         <!--Social buttons-->

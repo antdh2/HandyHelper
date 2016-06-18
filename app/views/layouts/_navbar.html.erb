@@ -32,18 +32,27 @@
         </li>
       </ul>
       <!--Search form-->
+      <% if user_signed_in? %>
       <ul class="nav navbar-nav pull-xs-right">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
+          <a class="nav-link dropdown-toggle" type="button" id="manageadmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
+          <div class="dropdown-menu" aria-labelledby="manageadmin">
+                <%= link_to 'Managed Listings', dashboard_path, class: "dropdown-item" %>
+                <%= link_to "Sales History", sales_path, class: "dropdown-item" %>
+                <%= link_to "Purchase History", purchases_path, class: "dropdown-item" %>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.name %></a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <% if !user_signed_in? %>
-              <%= link_to 'Sign In', new_user_session_path, class: "dropdown-item" %>
-              <%= link_to 'Sign Up', new_user_registration_path, class: "dropdown-item" %>
-            <% else %>
               <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               <%= link_to 'Edit Profile', edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to 'Managed Listings', dashboard_path, class: "dropdown-item" %>
-          <% end %>
+          <% else %>
+          <ul class="nav navbar-nav pull-xs-right">
+            <li class="nav-item"><%= link_to 'Sign In', new_user_session_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %></li>
+           <% end %>
+          </ul>
           </div>
         </li>
       </ul>

@@ -2,20 +2,22 @@ class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  def index
-    @offers = Offer.all
+
+  def sales
+    @offers = Offer.all.where(seller: current_user).order("created_at DESC")
   end
 
-  def show
+  def purchases
+    @offers = Offer.all.where(buyer: current_user).order("created_at DESC")
   end
+
 
   def new
     @offer = Offer.new
     @task = Task.find(params[:task_id])
   end
 
-  def edit
-  end
+
 
   def create
     @offer = Offer.new(offer_params)
@@ -32,7 +34,8 @@ class OffersController < ApplicationController
     @offer.buyer_id = current_user.id
     # finally set seller id equal to tasks creator user id
     @offer.seller_id = @seller.id
-
+    # ensure is_accepted is false when first creating offer
+    @offer.is_accepted = false
 
     respond_to do |format|
       if @offer.save
@@ -45,25 +48,7 @@ class OffersController < ApplicationController
     end
   end
 
-  def update
-    respond_to do |format|
-      if @offer.update(offer_params)
-        format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @offer }
-      else
-        format.html { render :edit }
-        format.json { render json: @offer.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
-  def destroy
-    @offer.destroy
-    respond_to do |format|
-      format.html { redirect_to offers_url, notice: 'Offer was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,0 +1,23 @@
+<h1 align="center">Your Sales History</h1>
+<hr>
+<br>
+
+<table class="table table-hover table-bordered">
+  <tr>
+    <th class="center">Image</th>
+    <th class="center">Name</th>
+    <th class="center">Price</th>
+    <th class="center">Customer</th>
+    <th class="center">Date Sold</th>
+  </tr>
+
+  <% @offers.each do |offer| %>
+      <tr>
+        <td id="tableimg"><%= image_tag offer.task.image.url %></td>
+        <td><%= offer.task.name %></td>
+        <td><%= number_to_currency(offer.task.price) %></td>
+        <td><%= offer.buyer.name %></td>
+        <td><%= offer.created_at.strftime("%B %-d, %Y") %></td>
+      </tr>
+  <% end %>
+</table>
