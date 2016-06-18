@@ -1,0 +1,26 @@
+<%= form_for([@task, @offer]) do |f| %>
+
+    <%= render 'layouts/offer_errors' %>
+
+    <div class="col-md-6 col-md-offset-2 margin-top">
+      <!--Panel-->
+      <div class="card">
+        <h3 class="card-header" align="center">Make An Offer</h3>
+        <div class="card-block">
+          <div class="md-form form-group">
+            <i class="fa fa-gbp prefix"></i>
+            <%= f.text_field :price, class: 'form-control', id: 'price' %>
+            <%= f.label "Offer Price", for: 'price', 'data-error' => 'wrong', 'data-success' => 'right' %><br />
+          </div>
+
+          <div class="md-form form-group">
+            <%= f.button "Make Offer", class: "btn btn-primary", style:"" %>
+            <%= link_to 'Back', tasks_path, class: "btn btn-link" %>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+<% end %>

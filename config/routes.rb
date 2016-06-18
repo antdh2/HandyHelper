@@ -4,7 +4,10 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  resources :tasks
+  # nest all routes AFTER /tasks/:id
+  resources :tasks do
+    resources :offers
+  end
   get 'pages/about'
   get 'pages/contact'
   get 'dashboard' => "tasks#dashboard"

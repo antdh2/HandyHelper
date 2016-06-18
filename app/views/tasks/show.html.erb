@@ -30,7 +30,7 @@
           Status: Open
         </div>
         <!--Call to action-->
-        <button class="btn btn-success">Make An Offer</button>
+        <%= link_to "Make An Offer", new_task_offer_path(@task), class: "btn btn-success" %>
         <a class="btn-floating wishlist" data-toggle="tooltip" data-placement="bottom" title="Add to wishlist"><i class="fa fa-heart"></i></a>
 
         <hr>

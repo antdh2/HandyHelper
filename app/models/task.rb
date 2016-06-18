@@ -14,5 +14,6 @@ class Task < ActiveRecord::Base
   # validates_attachment_presence :image
 
   belongs_to :user
+  has_many :offers
 
 end
