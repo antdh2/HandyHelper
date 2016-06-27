@@ -19,7 +19,13 @@ gem "mini_magick"
 gem 'devise'
 gem 'jquery-ui-rails'
 gem 'toastr-rails'
+gem 'stripe'
 
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-linkedin'
+gem 'omniauth-twitter'
 
 group :production do
   gem 'pg'

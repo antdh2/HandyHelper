@@ -1,26 +1,84 @@
-<%= form_for([@task, @offer]) do |f| %>
-
-    <%= render 'layouts/offer_errors' %>
-
-    <div class="col-md-6 col-md-offset-2 margin-top">
+<div class="row">
+  <div class="col-md-4">
+    <div class="col-md-12 margin-top-10">
       <!--Panel-->
       <div class="card">
-        <h3 class="card-header" align="center">Make An Offer</h3>
+        <h3 class="card-header" align="center"><%= @task.name %></h3>
         <div class="card-block">
-          <div class="md-form form-group">
-            <i class="fa fa-gbp prefix"></i>
-            <%= f.text_field :price, class: 'form-control', id: 'price' %>
-            <%= f.label "Offer Price", for: 'price', 'data-error' => 'wrong', 'data-success' => 'right' %><br />
+          <div class="thumbnail" align="center">
+            <%= image_tag @task.image.url %>
           </div>
-
-          <div class="md-form form-group">
-            <%= f.button "Make Offer", class: "btn btn-primary", style:"" %>
-            <%= link_to 'Back', tasks_path, class: "btn btn-link" %>
+          <div class="offerinfo" align="center">
+            <hr>
+            <strong>Price</strong>
+            <p><%= number_to_currency(@task.price) %></p>
+            <hr>
+            <strong>Description</strong>
+            <p><%= @task.description %></p>
+            <hr>
+            <strong>Task Offered By</strong>
+            <p><%= @task.user.name %></p>
           </div>
-
 
         </div>
       </div>
     </div>
+  </div>
+  <div class="col-md-8">
 
-<% end %>
+    <%= form_for([@task, @offer]) do |f| %>
+
+        <%= render 'layouts/offer_errors' %>
+
+        <div class="col-md-12 margin-top">
+          <!--Panel-->
+          <div class="card">
+            <h3 class="card-header" align="center">Make An Offer</h3>
+            <div class="card-block">
+              <div class="md-form form-group">
+                <i class="fa fa-gbp prefix"></i>
+                <%= f.text_field :price, class: 'form-control', id: 'price' %>
+                <%= f.label "Offer Price", for: 'price', 'data-error' => 'wrong', 'data-success' => 'right' %><br />
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-8">
+                  <div class="md-form form-group">
+                    <i class="fa fa-credit-card prefix"></i>
+                    <%= label_tag :card_number, "Credit Card Number" %>
+                    <%= text_field_tag :card_number, nil, { :name => nil, :'data-stripe' => "number", class: "form-control" } %>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="md-form form-group">
+                    <i class="fa fa-lock prefix"></i>
+                    <%= label_tag :card_code, "CVC" %>
+                    <%= text_field_tag :card_code, nil, { :name => nil, :'data-stripe' => "cvc", class: "form-control" } %>
+                  </div>
+                </div>
+              </div>
+              <%= label_tag nil, "Expiration Date" %>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="md-form form-group">
+                    <%= select_month nil, { use_two_digit_numbers: true }, { :name => nil, :'data-stripe' => "exp-month", class: 'form-control', id: 'card_cvc' } %>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <%= select_year nil, { start_year: Date.today.year, end_year: Date.today.year+10 }, { :name => nil, :'data-stripe' => "exp-year", class: 'form-control', id: 'card_cvc' } %>
+                </div>
+              </div>
+              <div class="md-form form-group">
+                <%= f.button "Make Offer", class: "btn btn-primary", style:"" %>
+                <%= link_to 'Back', task_path(@task), class: "btn btn-link" %>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+    <% end %>

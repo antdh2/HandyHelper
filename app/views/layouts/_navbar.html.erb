@@ -35,7 +35,9 @@
       <% if user_signed_in? %>
       <ul class="nav navbar-nav pull-xs-right">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" type="button" id="manageadmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Profile</a>
+          <a class="nav-link dropdown-toggle" type="button" id="manageadmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            My Profile
+          </a>
           <div class="dropdown-menu" aria-labelledby="manageadmin">
                 <%= link_to 'Managed Listings', dashboard_path, class: "dropdown-item" %>
                 <%= link_to "Sales History", sales_path, class: "dropdown-item" %>
@@ -43,7 +45,10 @@
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.name %></a>
+          <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= image_tag avatar_url(current_user), class: "img-circle avatar-small" %>&nbsp;
+            <%= current_user.name %> <span class="caret"></span>
+          </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
               <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               <%= link_to 'Edit Profile', edit_user_registration_path, class: "dropdown-item" %>

@@ -38,12 +38,12 @@ class OffersController < ApplicationController
     @offer.is_accepted = false
 
     respond_to do |format|
-      if @offer.save
+     if @offer.save
         format.html { redirect_to root_url, notice: 'Offer was successfully created.' }
-        format.json { render :show, status: :created, location: @offer }
+       format.json { render :show, status: :created, location: @offer }
       else
-        format.html { redirect_to new_task_offer_path(@task), alert: 'Something was wrong with the price' }
-        format.json { render json: @offer.errors, status: :unprocessable_entity }
+       format.html { redirect_to new_task_offer_path(@task), alert: 'Something was wrong with the price' }
+       format.json { render json: @offer.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -36,6 +36,8 @@
 
       <div class="actions">
         <%= f.button "Sign Up", class: 'btn btn-primary btn-lg' %>
+        <%= link_to "Sign Up with Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary" %>
+        <%= link_to "Sign Up with Google", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-primary" %>
       </div>
     </div>
   </div>
