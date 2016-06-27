@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users,
              :path => '',
-             :path_names => {:sign_in => 'login', :sign_out => 'logout', :edit => 'edit_profile'},
+             :path_names => {:sign_in => 'login', :sign_out => 'logout'},
              :controllers => {:omniauth_callbacks => 'omniauth_callbacks'}
+
 
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
@@ -12,8 +13,14 @@ Rails.application.routes.draw do
   resources :tasks do
     resources :offers, only: [:new, :create]
   end
+
+  resources :conversations, only: [:index, :create] do
+    resources :messages, only: [:index, :create]
+  end
+
   get 'pages/about'
   get 'pages/contact'
+  get 'users/:id' => 'profiles#show', as: "user"
   get 'dashboard' => "tasks#dashboard"
   get 'sales' => "offers#sales"
   get 'purchases' => "offers#purchases"

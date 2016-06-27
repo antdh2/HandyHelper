@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :sales, class_name: "Order", foreign_key: "seller_id"
   has_many :purchases, class_name: "Order", foreign_key: "buyer_id"
 
+
+
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
 

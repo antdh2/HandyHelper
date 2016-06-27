@@ -4,11 +4,11 @@ module ApplicationHelper
   end
 
   def avatar_url(user)
-    gravatar_id = Digest::MD5::hexdigest(user.email).downcase
+    # gravatar_id = Digest::MD5::hexdigest(user.email).downcase
     if user.image
       user.image
     else
-      "https://www.gravatar.com/avatar/#{gravatar_id}.jpg?d=identical&s=150"
+      "http://gurucul.com/wp-content/uploads/2015/01/default-user-icon-profile.png"
     end
   end
 end

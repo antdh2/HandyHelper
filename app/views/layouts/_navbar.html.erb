@@ -34,11 +34,17 @@
       <!--Search form-->
       <% if user_signed_in? %>
       <ul class="nav navbar-nav pull-xs-right">
+        <li class="nav-item">
+          <%= link_to conversations_path, class: "nav-link" do %>
+            <i class ="fa fa-envelope-o"> Messages</i>
+          <% end %>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" type="button" id="manageadmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             My Profile
           </a>
           <div class="dropdown-menu" aria-labelledby="manageadmin">
+                <%= link_to "My Profile", user_path(current_user), class: "dropdown-item" %>
                 <%= link_to 'Managed Listings', dashboard_path, class: "dropdown-item" %>
                 <%= link_to "Sales History", sales_path, class: "dropdown-item" %>
                 <%= link_to "Purchase History", purchases_path, class: "dropdown-item" %>
