@@ -27,6 +27,9 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin'
 gem 'omniauth-twitter'
 
+gem 'private_pub'
+gem 'thin'
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
