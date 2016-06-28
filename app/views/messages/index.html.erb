@@ -1,8 +1,13 @@
 <div class="row margin-top">
-  <div class="col-md-3 text-center">
+  <div class="col-md-3 text-center" align="center">
     <%= image_tag avatar_url(@other), class: "img-circle avatar-medium" %>
-    <strong><%= @other.name %></strong>
-    <%= link_to "View Profile", user_path(@other), class: "btn btn-primary" %>
+    <br>
+    <hr>
+    <div align="center">
+      <strong><%= @other.name %></strong>
+      <br>
+      <%= link_to "View Profile", user_path(@other), class: "btn btn-primary" %>
+    </div>
   </div>
   <div class="col-md-9">
     <div class="card">
@@ -10,12 +15,11 @@
       <div class="card-body">
         <div class="container">
           <%= form_for [@conversation, @conversation.messages.new], remote: true do |f| %>
-              <div class="form-group">
-                <%= f.text_area :content, placeholder: "Add a personal message", class: "form-control" %>
+              <div class="md-form">
+                <%= f.text_area :content, placeholder: "Enter a personal message", class: "md-textarea", id: "content" %>
                 <%= f.hidden_field :user_id, value: current_user.id %>
-
                 <div class="actions">
-                  <%= f.submit "Send Message", class: "btn btn-primary" %>
+                  <%= f.button "Send Message", class: "btn btn-success" %>
                 </div>
               </div>
           <% end %>

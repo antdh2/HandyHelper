@@ -17,6 +17,14 @@
   margin-top: 10%;
 }
 
+.margin-bottom {
+  margin-bottom: 5%;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 10%;
+}
+
 .card-block {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     -webkit-border-radius: 10px;
@@ -59,3 +67,4 @@
 .conversation:hover, .conversation:focus {
   background-color: #f4f4f5;
 }
+
